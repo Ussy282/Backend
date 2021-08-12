@@ -1,14 +1,25 @@
-import React, { useState } from 'react';
-import data from './data';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import LoadingBox from './LoadingBox';
+import MessageBox from './MessageBox';
 import Rating from './Rating';
+import { productDetailsActions } from './reduxStore/productAction';
 
 function ProductDetails(props) {
     const[qty, setQty] = useState(0);
-    const product = data.products.find((x) => x._id === Number(props.match.params.id));
-    if (!product) {
-        return <h1>Product Not Found</h1>
-    } else {
+    const productDetails = useSelector(state => state.productDetails);
+    const { product, loading, error} = productDetails;
+   const  productId = Number(props.match.params.id);    
+const dispatch = useDispatch()
+    useEffect(() => {       
+       dispatch(productDetailsActions(productId));
+    }, [dispatch, productId]);
         return (
+<div>
+            {
+                loading ? <LoadingBox></LoadingBox>
+                :error ? <MessageBox variant="danger">{error}</MessageBox>
+                :
             <div className="row top">
             <div className="col-2">
                         <img className="large" src={product.image} alt={product.name} />
@@ -56,7 +67,7 @@ function ProductDetails(props) {
                                   </div>
                                   </div>
                                   {product.countInStock > 0 &&(
-                                      <>
+                                      <ul>
                                         <div className="row">
                                         <div>Qty</div>
                                         <div>
@@ -70,16 +81,18 @@ function ProductDetails(props) {
                                         </div>
                                     </div>
                                     <button className="primary block">Add To Cart</button>
-                                    </>
+                                    </ul>
                                   )}    
 
                           </div>
                       </div>
                 </div>
                 </div>
+}
+</div>
         )
     }
-}
+
 
 
 export default ProductDetails;

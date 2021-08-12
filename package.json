@@ -1,0 +1,25 @@
+{
+  "name": "e-commerce",
+  "type": "module",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon --watch backend --exec node experimental-modules backend/server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ussy282/e-commerce-app.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Ussy282/e-commerce-app/issues"
+  },
+  "homepage": "https://github.com/Ussy282/e-commerce-app#readme",
+  "description": "",
+  "dependencies": {
+    "express": "^4.17.1",
+    "nodemon": "^2.0.12"
+  }
+}

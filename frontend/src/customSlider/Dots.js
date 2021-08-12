@@ -1,7 +1,6 @@
 import React from 'react'
 
 const Dots = ({ activeIndex, onclick, imageSlide}) => {
-    console.log(imageSlide)
     return(
         <div className="all-dots">
             {

@@ -16,7 +16,6 @@ const ProductsCard = ({ products }) => {
                     <div className="row">
                     <span className="price">₦{products.price}</span>
                     </div>
-                    
             </div>
         </div>
     )

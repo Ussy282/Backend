@@ -1,7 +1,6 @@
 import React from 'react'
 
 const ImageContainer =({imageSlide, activeIndex}) => {
-    console.log(imageSlide)
     return(
         <div className="slides">
             {
